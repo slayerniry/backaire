@@ -153,7 +153,11 @@ loadRessource($langue);
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-bazar_mada">
         <div class="container-fluid">
             <div class="navbar-header">
-                <span style="font-size: 36px;" id="toggle-slider-button" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <span style="font-size: 26px;cursor: pointer;  " id="toggle-slider-button" class="glyphicon glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
+
+                
+               
+                
             </div>
 
 

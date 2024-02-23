@@ -119,7 +119,11 @@
 -->
 
 
+
+
 <script type="text/javascript" disabled>
+
+
     // Créer un élément de chargement
     var loader = document.createElement("div");
     loader.classList.add("loader");

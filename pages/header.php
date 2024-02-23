@@ -20,6 +20,7 @@ loadRessource($langue);
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
     <meta name="google" content="notranslate">
+    <meta charset="utf-8">
     <meta http-equiv="Content-Language" content="fr">
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>css/bootstrap.min.css" />
     <!-- Select2 CSS -->
@@ -28,6 +29,10 @@ loadRessource($langue);
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>css/tabulator.min.css">
     <link href="<?php echo HTTP_PAGE ?>css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="<?php echo HTTP_PAGE ?>css/dashboard.css" rel="stylesheet">
+
+    <!--<link href="<?php echo HTTP_PAGE ?>summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">-->
+
+
     <script src="<?php echo HTTP_PAGE ?>js/ie-emulation-modes-warning.js"></script>
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>datatable2/datatables.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>datatable2/Buttons-2.2.3/css/buttons.dataTables.min.css" crossorigin="anonymous">
@@ -44,6 +49,11 @@ loadRessource($langue);
     <script src="<?php echo HTTP_PAGE ?>js/tabulator.min.js"></script>
     <script src="<?php echo HTTP_PAGE ?>js/xlsx.full.min.js"></script>
     <script src="<?php echo HTTP_PAGE ?>js/holder.min.js"></script>
+
+    <!-- <script src="<?php echo HTTP_PAGE ?>summernote-0.8.18-dist/summernote.min.js"></script>-->
+
+   
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo HTTP_PAGE ?>js/ie10-viewport-bug-workaround.js"></script>
     <script language="javascript" src="<?php echo HTTP_PAGE ?>datatable2/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>

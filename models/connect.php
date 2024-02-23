@@ -17,7 +17,7 @@ class connect
 
     public function execute_req($sql)
     {
-        $dsn = "mysql:dbname=" . $this->dbName . ";host=" . $this->dbHost;
+        $dsn = "mysql:dbname=" . $this->dbName . ";charset=utf8;host=" . $this->dbHost;
         try {
             $connexion = new PDO($dsn, $this->dbUser, $this->dbPassword);
             $connexion->query($sql);
@@ -36,7 +36,7 @@ class connect
         $pass = $this->dbPassword;
 
         try {
-            $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+            $conn = new PDO("mysql:host=$host;charset=utf8;dbname=$db", $user, $pass);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $conn->prepare($req);

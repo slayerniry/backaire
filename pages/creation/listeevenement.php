@@ -1,19 +1,12 @@
 <?php
-
 require_once("../header.php");
-
 if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_code"])) {
-
     require_once(RP_MODELS . "t_event.class.php");
     require_once(RP_MODELS . "type_event.class.php");
-
     $type_event = new type_event();
     $t_event = new t_event();
-
     $tab['t_type_event'] = $type_event->lireParCritere(array());
-
     if (isset($_GET["code"])) {
-
         switch ($_GET["code"]) {
             case 0:
                 $msg = "<li>" . _getText("mise.jour.effectue") . "</li>";
@@ -21,12 +14,9 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
             default:
                 $critere["id_event"] = $_GET["code"];
                 $data = $t_event->lireParCritere($critere);
-
                 $msg .= "<li><b>" . _getText("titre") . "</b> :" . ($data[0]["titre"]) . "</li>";
                 $msg .= "<li><b>" . _getText("date") . "</b> :" . convertDateFormat4($data[0]["date_event"]) . "</li>";
                 $msg .= "<li><b>" . _getText("contenu") . "</b> :" . ($data[0]["contenu"])  . "</li>";
-
-
                 break;
         }
     }
@@ -40,8 +30,6 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-
-
                     <div class="col-md-9">
                         <div class="panel panel-bazar_mada">
                             <div class="panel-heading panel-head-bazar_mada">
@@ -65,7 +53,6 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                                                 <input type="date" name="date_event_max" id="date_event_max" class="form-control">
                                             </div>
                                         </div>
-
                                         <div class="form-group row ">
                                             <div class="col-sm-2">
                                                 <label for="id_type_event_rech"><?= _getText("type") ?></label>
@@ -89,42 +76,30 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                                                 <input name="contenu_rech" id="contenu_rech" class="form-control">
                                             </div>
                                         </div>
-
                                         <div class="form-group row ">
                                             <center>
                                                 <button id="btnvalider" type="button" class="btn btn-success">
                                                     <?php echo _getText("btnValider")  ?>
                                                 </button>
-
                                                 <button type="button" class="btn btn-info" onclick="location.href='<?php echo $_SERVER["PHP_SELF"] . "?ent_type=" . $_GET["ent_type"] ?>'">
                                                     <?php echo _getText("initialiser") ?>
                                                 </button>
                                             </center>
                                         </div>
-
                                     </form>
-
                                 </fieldset>
-
                                 <div class="row">
                                     <div class="col-md-12">
                                         <hr>
                                     </div>
                                 </div>
-
                                 <fieldset>
-
                                     <?php
-
                                     if ($utilisateur->habilitationButton($_SERVER["SCRIPT_NAME"], "btnAjouter", $_SESSION["prf_code"])) {
-
                                     ?>
                                         <a class="btn btn-success " href="#" title="" data-toggle="popover" data-trigger="hover" data-content="<?= _getText("btnAjouter") ?>" data-original-title=""><span url="<?= HTTP_PAGE_CREATION ?>formt_event.php?code=0" class="glyphicon glyphicon-plus btnupdate"></span></a>
-
                                     <?php } ?>
-
                                     <div class="table-responsive">
-
                                         <table class="table table-hover table-striped   table-bordered " id="table">
                                             <thead>
                                                 <tr>
@@ -143,7 +118,6 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                                         </table>
                                     </div>
                                 </fieldset>
-
                             </div>
                         </div>
                     </div>
@@ -187,9 +161,7 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
             </div>
         </div>
     </div>
-
     <?php require_once("../footer.php"); ?>
-
     <div id="confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="confirm-modal">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -213,36 +185,23 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
             </div>
         </div>
     </div>
-
-
     <script type="application/javascript">
         $(document).ready(function($) {
-
             $("#form").toggle("fast");
-
             $("#lg_rech").click(function(event) {
                 $("#form").toggle("slow");
             });
-
             var var_url = "?id_type_event_rech=" + $("#id_type_event_rech").val() + "";
             var_url += "&contenu_rech=" + $("#contenu_rech").val() + "";
-
             var_url += "&date_event_min=" + $("#date_event_min").val() + "";
             var_url += "&date_event_max=" + $("#date_event_max").val() + "";
-
-
             $("#date_event_min").change(function(event) {
                 $("#date_event_max").val(rampitso($(this).val()));
             });
-
             $("#date_event_min").trigger('change');
             $("#btnvalider").trigger("click");
-
-
             var data = $('#table').DataTable({
-                rowCallback: function(row, data) {
-
-                },
+                rowCallback: function(row, data) {},
                 "pagingType": 'full',
                 "responsive": true,
                 "bFilter": false,
@@ -256,51 +215,34 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                         "aTargets": [4],
                         "mData": 4,
                         "mRender": function(data, type, full) {
-
                             var btnmodifier = "";
                             var btndetail = "";
                             var btnsuppr = "";
                             var btndetail2 = "";
-
                             <?php
                             if ($utilisateur->habilitationButton($_SERVER["SCRIPT_NAME"], "btnModifier", $_SESSION["prf_code"])) {
                             ?>
                                 btnmodifier = '<a title="<?= _getText('btnModifier') ?>" data-toggle="popover" data-trigger="hover" data-content="<?php echo _getText('btnModifier')  ?>" class="btn btn-success " href="#"><span onClick="affiche_modal_poccess(\'<?php echo HTTP_PAGE_CREATION ?>formt_event.php?code=' + data + '\')" class="glyphicon glyphicon-pencil btnupdate"></span></a>';
                             <?php } ?>
-
                             <?php
                             if ($utilisateur->habilitationButton($_SERVER["SCRIPT_NAME"] . "", "detail", $_SESSION["prf_code"])) {
                             ?>
-
                                 //btndetail = '<a title="<?= _getText('detail') ?>(' + full[5] + ')" data-toggle="popover" data-trigger="hover" data-content="<?php echo _getText('detail')  ?>" class="btn btn-info " href="<?php echo HTTP_PAGE_CREATION ?>listedett_event.php?id_event=' + data + '"><span class="glyphicon glyphicon-book btnupdate" ></span></a><span>&nbsp;</span>';
                                 btndetail = "";
-
                                 btndetail2 = '';
-
                                 /*if (full[5] == 1) {
                                     btndetail2 = '<span class="glyphicon glyphicon-lock"></span>';
-
                                 }*/
-
                             <?php } ?>
-
                             <?php
-
                             if ($utilisateur->habilitationButton($_SERVER["SCRIPT_NAME"] . "", "btnSupprimer", $_SESSION["prf_code"])) {
-
                             ?>
-
                                 btnsuppr = '<a title="<?php echo _getText('btnSupprimer')  ?>" class="btn btn-danger" href="#"><span class="glyphicon glyphicon-remove" onClick="confirm_proccess(\'<?php echo HTTP_EXEC_CREATION ?>formt_eventExec.php?code=' + data + '&ent_type=<?= (isset($_GET["ent_type"]) ? $_GET["ent_type"] : "") ?>\'  ,\'<?= _getText("message.supprimer") . " " . _getText('date') . " :";  ?>' + formatDate(full[0]) +
                                     '\')"></span></a>';
-
                                 /*if (full[8] == 1) {
                                     btnsuppr = '';
-
                                 }*/
-
-
                             <?php } ?>
-
                             return '<div class="btn-group-horizontal">' + btnmodifier + '<span>&nbsp;</span>' + btndetail + '<span>&nbsp;</span>' + btndetail2 + '<span>&nbsp;</span>' + btnsuppr + '</div>';
                         }
                     },
@@ -308,7 +250,6 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                         "aTargets": [0],
                         "mData": 0,
                         "mRender": function(data, type, full) {
-
                             return '<div align="center">' + (data) + '</div>';
                         }
                     },
@@ -316,7 +257,6 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                         "aTargets": [1],
                         "mData": 1,
                         "mRender": function(data, type, full) {
-
                             return '<div align="center">' + formatDate(data) + '</div>';
                         }
                     },
@@ -324,7 +264,6 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                         "aTargets": [5],
                         "mData": 5,
                         "visible": false
-
                     },
                 ],
                 "aLengthMenu": [
@@ -335,29 +274,18 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                     $(this).css("table-layout", "fixed");
                 }
             });
-
-
             data.order([5, 'desc']).draw();
-
             $("#btnvalider").on("click", function() {
-
                 $("#form").removeAttr('target');
-
                 var var_url = "?id_type_event_rech=" + $("#id_type_event_rech").val() + "";
                 var_url += "&contenu_rech=" + $("#contenu_rech").val() + "";
-
                 var_url += "&date_event_min=" + $("#date_event_min").val() + "";
                 var_url += "&date_event_max=" + $("#date_event_max").val() + "";
-
                 data.ajax.url("<?= HTTP_AJAX_CREATION ?>ajaxlistet_event.php" + var_url).load();
-
                 data.order([5, 'desc']).draw();
-
             });
-
         });
     </script>
-
 <?php } else {
     require_once(RP_MAIN . "pages/vide.php");
 } ?>

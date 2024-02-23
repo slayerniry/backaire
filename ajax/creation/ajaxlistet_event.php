@@ -6,7 +6,7 @@ $table = "vw_t_event";
 $primaryKey = 'id_event';
 
 $columns = array(
-    array('db' => 'titre', 'dt' => 0),
+    array('db' => 'left_titre', 'dt' => 0),
     array('db' => 'date_event', 'dt' => 1),
     array('db' => 'type_event', 'dt' => 2),
     array('db' => 'left_contenu', 'dt' => 3),

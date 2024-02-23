@@ -321,6 +321,9 @@ function replace_texte_speciaux($str)
 	$texte = str_replace($balise, " ", $str);
 
 	$texte = str_replace("’", "&prime;", $texte);
+	$texte = str_replace("’", "&prime;", $texte);
+	
+
 	$texte = str_replace("'", "&prime;", $texte);
 	$texte = str_replace("<", "&lt;", $texte);
 	$texte = str_replace(">", "&gt;", $texte);
@@ -557,7 +560,7 @@ function remplacerCaracteresSpeciaux($chaine)
 		'î' => '&icirc;', 'ï' => '&iuml;', 'ð' => '&eth;', 'ñ' => '&ntilde;', 'ò' => '&ograve;',
 		'ó' => '&oacute;', 'ô' => '&ocirc;', 'õ' => '&otilde;', 'ö' => '&ouml;', 'ø' => '&oslash;',
 		'ù' => '&ugrave;', 'ú' => '&uacute;', 'û' => '&ucirc;', 'ü' => '&uuml;', 'ý' => '&yacute;',
-		'þ' => '&thorn;', 'ÿ' => '&yuml;',
+		'þ' => '&thorn;', 'ÿ' => '&yuml;', '\&#039' => "'",
 	);
 
 	$chaine = strtr($chaine, $caracteresSpeciaux);

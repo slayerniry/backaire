@@ -711,3 +711,18 @@ function _getText($key, $encode = 0)
 	}
 	return "[" . ($encode == 0 ? ($key) : ($key))  . "]";
 }
+
+
+function commuterApostrophes($texte) {
+    $texteCorrige = '';
+    $longueur = strlen($texte);
+    for ($i = 0; $i < $longueur; $i++) {
+        // Si le caractère est une apostrophe typographique, remplacez-la par une apostrophe standard
+        if (ord($texte[$i]) === 8217) {
+            $texteCorrige .= "'";
+        } else {
+            $texteCorrige .= $texte[$i];
+        }
+    }
+    return $texteCorrige;
+}

@@ -83,7 +83,7 @@ if ($_GET["code"] != "") {
         </form>
     </fieldset>
 </div>
-
+<script src="<?= HTTP_PAGE ?>js/stock.js"></script>
 <script>
     $(document).ready(function() {
 

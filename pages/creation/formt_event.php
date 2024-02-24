@@ -104,10 +104,22 @@ unset($tab['t_type_event']["cnt"]);
         </fieldset>
     </form>
 </div>
+
+<script src="<?= HTTP_PAGE ?>js/stock.js"></script>
 <script type="text/javascript">
+    
+
     jQuery(document).ready(function($) {
         $("#id_type_event").val("<?php echo $tab['t_event']['id_type_event'] ?? "" ?>");
         $("#btn_submit").click(function(event) {
+
+            /*var txt = $("#contenu").val();
+            $("#contenu").val(commuterApostrophes(txt));
+
+            txt = $("#txttitre").val();
+
+            $("#txttitre").val(commuterApostrophes(txt));*/
+
             formSocMAJ.submit();
         });
         /*$("textarea").summernote({

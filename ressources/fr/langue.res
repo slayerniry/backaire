@@ -11,6 +11,9 @@ langue = Langue
 tous = Tous 
 initialiser = Initialiser
 
+page.non.autorise = Pas disponible pour vous
+erreur = Erreur
+
 message.supprimer =  Voulez vous supprimer cette enregistrement ?
 
 message.bienvenue = Bienvenu 

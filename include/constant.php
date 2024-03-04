@@ -1,7 +1,7 @@
 <?php
 
 
-define("DB_HOST", "127.0.0.1");
+define("DB_HOST", "localhost");
 define("DB_NAME", "aire");
 define("DB_USER", "root");
 define("DB_PWD", "root");
@@ -9,12 +9,12 @@ define("DB_PWD", "root");
 
 $tab_php_self = explode("/", $_SERVER['PHP_SELF']);
 
-define('RP_MAIN', $_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/");
-define('ROOT_PATH', $_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/");
+define('RP_MAIN', $_SERVER["DOCUMENT_ROOT"] . "/admin/");
+define('ROOT_PATH', RP_MAIN);
 
-define('HTTP_MAIN', "http://" . $_SERVER["HTTP_HOST"] . "/" . $tab_php_self[1]  . "/");
+define('HTTP_MAIN', "http://" . $_SERVER["HTTP_HOST"] . "/admin/");
 
-define('HTTP_MAIN_MENU', "http://" . $_SERVER["HTTP_HOST"] . "");
+define('HTTP_MAIN_MENU', HTTP_MAIN);
 
 
 define("INSTALL_DIR", "/" . $tab_php_self[1]  . "/");

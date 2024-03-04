@@ -1,11 +1,13 @@
 <?php
 
-define('RP_MAIN_CONF', $_SERVER["DOCUMENT_ROOT"] . "/admin/");
+
+define('RP_MAIN_CONF', $_SERVER["DOCUMENT_ROOT"] . "/backaire/");
+
+die(RP_MAIN_CONF);
+
 define("CHAMP", "CC");
 
 require_once(RP_MAIN_CONF . "include/constant.php");
-
-
 require_once(RP_MAIN_CONF . "classes/nombre_en_lettre.php");
 require_once(RP_MAIN_CONF . "classes/debug.php");
 require_once(RP_MAIN_CONF . "classes/datetime.lib.php");

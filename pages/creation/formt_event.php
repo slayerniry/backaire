@@ -18,6 +18,10 @@ unset($tab['t_type_event']["cnt"]);
         width: 300px;
         height: auto;
     }
+    .photo_team {
+        width: 300px;
+        height: auto;
+    }
 </style>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -104,27 +108,29 @@ unset($tab['t_type_event']["cnt"]);
         </fieldset>
     </form>
 </div>
-
 <script src="<?= HTTP_PAGE ?>js/stock.js"></script>
 <script type="text/javascript">
-    
-
+    function isEmpty(inputField) {
+        return $.trim(inputField.val()) == "";
+    }
+    function showError(inputField) {
+        inputField.focus();
+        inputField.css("background-color", "red");
+        inputField.css("color", "white");
+    }
     jQuery(document).ready(function($) {
         $("#id_type_event").val("<?php echo $tab['t_event']['id_type_event'] ?? "" ?>");
         $("#btn_submit").click(function(event) {
-
-            /*var txt = $("#contenu").val();
-            $("#contenu").val(commuterApostrophes(txt));
-
-            txt = $("#txttitre").val();
-
-            $("#txttitre").val(commuterApostrophes(txt));*/
-
-            formSocMAJ.submit();
+            if (isEmpty($("#id_type_event"))) {
+                showError($("#id_type_event"));
+            } else if (isEmpty($("#date_event"))) {
+                showError($("#date_event"));
+            } else if (isEmpty($("#txttitre"))) {
+                showError($("#txttitre"));
+            } else {
+                formSocMAJ.submit();
+            }
         });
-        /*$("textarea").summernote({
-            toolbar: []
-        });*/
     });
 </script>
 <script>

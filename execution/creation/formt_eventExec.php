@@ -11,7 +11,16 @@ if (isset($_GET["code"])) {
     $var_url = "suppr=" . $_GET['code'];
 } else {
     $source = $_FILES["photo_event"];
-    $_POST["photo_event"] =  uploadFichierPhoto($source, "photo_event", 0);
+
+   $typ_photo = "photo_event";
+
+   if($_POST["id_type_event"] == 4){
+    $typ_photo = "photo_team";
+   }
+
+    $_POST["photo_event"] =  uploadFichierPhoto($source, $typ_photo, 0);
+
+
     if ($_POST['id_event'] > 0) {
         $t_event->modifier($_POST, 1);
     } else {

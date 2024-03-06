@@ -310,7 +310,8 @@ function replace_texte_speciaux_excel($str)
 /**
  * ! tsy mahazo kitiana intsony
  */
-function replace_texte_speciaux($str){
+function replace_texte_speciaux($str)
+{
 
 	$texte = "";
 	$tab = str_split($str);
@@ -323,17 +324,22 @@ function replace_texte_speciaux($str){
 
 	foreach ($tab as $key => $value) {
 		switch (ord($value)) {
-			case 146 :
+			case 146:
 				$texte .= "'";
 				break;
-
+			case 156:
+				$texte .= "&oelig;";
+				break;
+			case 133:
+				$texte .= "...";
+				break;
 			default:
 				$texte .= $value;
 				break;
 		}
 	}
 
-	
+
 
 	return $texte;
 }

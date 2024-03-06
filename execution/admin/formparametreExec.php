@@ -11,6 +11,12 @@ if (isset($_GET["code"])) {
 } else {
     $_POST["param_key_upd"] = $_SESSION["param_key"] ?? "";
     if ($_POST['param_key'] != "") {
+
+
+        /*$_POST['param_desc'] = replace_texte_speciaux($_POST['param_desc']) ;
+
+        debug($_POST);*/
+
         $parametre->modifier($_POST);
     } else {
         $parametre->ajouter($_POST);

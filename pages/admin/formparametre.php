@@ -87,6 +87,11 @@ if ($_GET["code"] != "") {
 <script>
     $(document).ready(function() {
 
+        $('#param_comment').richText();
+
+        $('#param_desc').richText();
+
+        
 
     });
 </script>

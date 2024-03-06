@@ -16,7 +16,6 @@ else
 loadRessource($langue);
 ?>
 <html lang="fr">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
     <meta name="google" content="notranslate">
@@ -29,10 +28,9 @@ loadRessource($langue);
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>css/tabulator.min.css">
     <link href="<?php echo HTTP_PAGE ?>css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="<?php echo HTTP_PAGE ?>css/dashboard.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>src/richtext.min.css">
     <!--<link href="<?php echo HTTP_PAGE ?>summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">-->
-
-
     <script src="<?php echo HTTP_PAGE ?>js/ie-emulation-modes-warning.js"></script>
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>datatable2/datatables.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>datatable2/Buttons-2.2.3/css/buttons.dataTables.min.css" crossorigin="anonymous">
@@ -41,6 +39,7 @@ loadRessource($langue);
     <link rel="stylesheet" href="<?php echo HTTP_PAGE ?>datatable2/DataTables-1.12.1/css/responsive.bootstrap.min.css" crossorigin="anonymous">
     <script src="<?php echo HTTP_PAGE ?>js/jquery-1.12.4.js"></script>
     <script src="<?php echo HTTP_PAGE ?>js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo HTTP_PAGE ?>src/jquery.richtext.js"></script>
     <!-- Select2 JS -->
     <script src="<?php echo HTTP_PAGE ?>select2/dist/js/select2.js" type="text/javascript"></script>
     <script src="<?php echo HTTP_PAGE ?>datatable2/datatables.min.js"></script>
@@ -49,11 +48,7 @@ loadRessource($langue);
     <script src="<?php echo HTTP_PAGE ?>js/tabulator.min.js"></script>
     <script src="<?php echo HTTP_PAGE ?>js/xlsx.full.min.js"></script>
     <script src="<?php echo HTTP_PAGE ?>js/holder.min.js"></script>
-
     <!-- <script src="<?php echo HTTP_PAGE ?>summernote-0.8.18-dist/summernote.min.js"></script>-->
-
-   
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo HTTP_PAGE ?>js/ie10-viewport-bug-workaround.js"></script>
     <script language="javascript" src="<?php echo HTTP_PAGE ?>datatable2/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
@@ -73,7 +68,6 @@ loadRessource($langue);
             right: 2%;
             width: 30%;
         }
-
         .nav-sidebar li.parent {
             background: #b0d670;
             /* Old browsers */
@@ -87,17 +81,14 @@ loadRessource($langue);
             /* IE6-9 */
             color: #fff;
         }
-
         .nav-sidebar li.parent a {
             /* IE6-9 */
             color: #fff;
         }
-
         .nav-sidebar li.parent a:hover {
             /* IE6-9 */
             color: #01953D;
         }
-
         .nav-sidebar>li>a {
             color: #01953D;
             font-weight: bold;
@@ -122,7 +113,6 @@ loadRessource($langue);
     </script>
     <title><?= _getText("titre_logiciel") ?></title>
 </head>
-
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-bazar_mada">
         <div class="container-fluid">

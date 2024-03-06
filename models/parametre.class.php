@@ -79,10 +79,10 @@ class parametre
 
 		$sql = "INSERT INTO parametre 
 				SET 
-					param_key = '" .  addslashes($tab['param_key']) . "' ,
-					param_value = '" .  htmlentities(addslashes($tab['param_value']))  . "' ,
-					param_desc = '" .  htmlentities(addslashes($tab['param_desc'])) . "' ,
-					param_comment = '" .  htmlentities(addslashes($tab['param_comment'])) . "' 
+					param_key = '" .  $this->connect->my_htmlencode($tab['param_key'],1) . "' ,
+					param_value = '" .  $this->connect->my_htmlencode($tab['param_value'],1)  . "' ,
+					param_desc = '" .  $this->connect->my_htmlencode($tab['param_desc'],1) . "' ,
+					param_comment = '" .  $this->connect->my_htmlencode($tab['param_comment'],1) . "' 
 				";
 
 		$this->connect->execute_req($sql);
@@ -93,10 +93,10 @@ class parametre
 
 		$sql = "UPDATE parametre 
 				SET 
-					param_value = '" .  htmlentities(addslashes($tab['param_value']))  . "' ,
-					param_desc = '" .  htmlentities(addslashes($tab['param_desc'])) . "' ,
-					param_comment = '" .  $tab['param_comment'] . "' 
-				WHERE param_key	 = '" .  addslashes($tab['param_key']) . "' ";
+					param_value = '" .  $this->connect->my_htmlencode($tab['param_value'],1)  . "' ,
+					param_desc = '" . $this->connect->my_htmlencode($tab['param_desc'],1) . "' ,
+					param_comment = '" . $this->connect->my_htmlencode($tab['param_comment'], 1)  . "' 
+				WHERE param_key	 = '" .  $this->connect->my_htmlencode($tab['param_key'],1) . "' "; 
 
 		$this->connect->execute_req($sql);
 	}

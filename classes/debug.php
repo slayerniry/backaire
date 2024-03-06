@@ -310,123 +310,34 @@ function replace_texte_speciaux_excel($str)
 /**
  * ! tsy mahazo kitiana intsony
  */
-function replace_texte_speciaux($str)
-{
+function replace_texte_speciaux($str){
 
-	$balise = array("<em>", "</em>", "<sup>", "</sup>", "<br />");
+	$texte = "";
+	$tab = str_split($str);
 
-	if ($str == '')
-		$str = ' ';
+	/*foreach ($tab as $key => $value) {
+		$texte .= $value . " => " . ord($value);
+	}
 
-	$texte = str_replace($balise, " ", $str);
+	die($texte);*/
 
-	$texte = str_replace("’", "&prime;", $texte);
-	$texte = str_replace("’", "&prime;", $texte);
+	foreach ($tab as $key => $value) {
+		switch (ord($value)) {
+			case 146 :
+				$texte .= "'";
+				break;
+
+			default:
+				$texte .= $value;
+				break;
+		}
+	}
+
 	
 
-	$texte = str_replace("'", "&prime;", $texte);
-	$texte = str_replace("<", "&lt;", $texte);
-	$texte = str_replace(">", "&gt;", $texte);
-	$texte = str_replace(" ", "&nbsp;", $texte);
-	$texte = str_replace("¡", "&iexcl;", $texte);
-	$texte = str_replace("¢", "&cent;", $texte);
-	$texte = str_replace("£", "&pound;", $texte);
-	$texte = str_replace("¤", "&curren;", $texte);
-	$texte = str_replace("¥", "&yen;", $texte);
-	$texte = str_replace("¦", "&brvbar;", $texte);
-	$texte = str_replace("§", "&sect;", $texte);
-	$texte = str_replace("¨", "&uml;", $texte);
-	$texte = str_replace("©", "&copy;", $texte);
-	$texte = str_replace("ª", "&ordf;", $texte);
-	$texte = str_replace("«", "&laquo;", $texte);
-	$texte = str_replace("¬", "&not;", $texte);
-	$texte = str_replace("­", "&shy;", $texte);
-	$texte = str_replace("®", "&reg;", $texte);
-	$texte = str_replace("¯", "&macr;", $texte);
-	$texte = str_replace("°", "&deg;", $texte);
-	$texte = str_replace("±", "&plusmn;", $texte);
-	$texte = str_replace("²", "&sup2;", $texte);
-	$texte = str_replace("³", "&sup3;", $texte);
-	$texte = str_replace("´", "&acute;", $texte);
-	$texte = str_replace("µ", "&micro;", $texte);
-	$texte = str_replace("¶", "&para;", $texte);
-	$texte = str_replace("·", "&middot;", $texte);
-	$texte = str_replace("¸", "&cedil;", $texte);
-	$texte = str_replace("¹", "&sup1;", $texte);
-	$texte = str_replace("º", "&ordm;", $texte);
-	$texte = str_replace("»", "&raquo;", $texte);
-	$texte = str_replace("¼", "&frac14;", $texte);
-	$texte = str_replace("½", "&frac12;", $texte);
-	$texte = str_replace("¾", "&frac34;", $texte);
-	$texte = str_replace("¿", "&iquest;", $texte);
-	$texte = str_replace("À", "&Agrave;", $texte);
-	$texte = str_replace("Á", "&Aacute;", $texte);
-	$texte = str_replace("Â", "&Acirc;", $texte);
-	$texte = str_replace("Ã", "&Atilde;", $texte);
-	$texte = str_replace("Ä", "&Auml;", $texte);
-	$texte = str_replace("Å", "&Aring;", $texte);
-	$texte = str_replace("Æ", "&AElig;", $texte);
-	$texte = str_replace("Ç", "&Ccedil;", $texte);
-	$texte = str_replace("È", "&Egrave;", $texte);
-	$texte = str_replace("É", "&Eacute;", $texte);
-	$texte = str_replace("Ê", "&Ecirc;", $texte);
-	$texte = str_replace("Ë", "&Euml;", $texte);
-	$texte = str_replace("Ì", "&Igrave;", $texte);
-	$texte = str_replace("Í", "&Iacute;", $texte);
-	$texte = str_replace("Î", "&Icirc;", $texte);
-	$texte = str_replace("Ï", "&Iuml;", $texte);
-	$texte = str_replace("Ð", "&ETH;", $texte);
-	$texte = str_replace("Ñ", "&Ntilde;", $texte);
-	$texte = str_replace("Ò", "&Ograve;", $texte);
-	$texte = str_replace("Ó", "&Oacute;", $texte);
-	$texte = str_replace("Ô", "&Ocirc;", $texte);
-	$texte = str_replace("Õ", "&Otilde;", $texte);
-	$texte = str_replace("Ö", "&Ouml;", $texte);
-	$texte = str_replace("×", "&times;", $texte);
-	$texte = str_replace("Ø", "&Oslash;", $texte);
-	$texte = str_replace("Ù", "&Ugrave;", $texte);
-	$texte = str_replace("Ú", "&Uacute;", $texte);
-	$texte = str_replace("Û", "&Ucirc;", $texte);
-	$texte = str_replace("Ü", "&Uuml;", $texte);
-	$texte = str_replace("Ý", "&Yacute;", $texte);
-	$texte = str_replace("Þ", "&THORN;", $texte);
-	$texte = str_replace("ß", "&szlig;", $texte);
-	$texte = str_replace("à", "&agrave;", $texte);
-	$texte = str_replace("á", "&aacute;", $texte);
-	$texte = str_replace("â", "&acirc;", $texte);
-	$texte = str_replace("ã", "&atilde;", $texte);
-	$texte = str_replace("ä", "&auml;", $texte);
-	$texte = str_replace("å", "&aring;", $texte);
-	$texte = str_replace("æ", "&aelig;", $texte);
-	$texte = str_replace("ç", "&ccedil;", $texte);
-	$texte = str_replace("è", "&egrave;", $texte);
-	$texte = str_replace("é", "&eacute;", $texte);
-	$texte = str_replace("ê", "&ecirc;", $texte);
-	$texte = str_replace("ë", "&euml;", $texte);
-	$texte = str_replace("ì", "&igrave;", $texte);
-	$texte = str_replace("í", "&iacute;", $texte);
-	$texte = str_replace("î", "&icirc;", $texte);
-	$texte = str_replace("ï", "&iuml;", $texte);
-	$texte = str_replace("ð", "&eth;", $texte);
-	$texte = str_replace("ñ", "&ntilde;", $texte);
-	$texte = str_replace("ò", "&ograve;", $texte);
-	$texte = str_replace("ó", "&oacute;", $texte);
-	$texte = str_replace("ô", "&ocirc;", $texte);
-	$texte = str_replace("õ", "&otilde;", $texte);
-	$texte = str_replace("ö", "&ouml;", $texte);
-	$texte = str_replace("÷", "&divide;", $texte);
-	$texte = str_replace("ø", "&oslash;", $texte);
-	$texte = str_replace("ù", "&ugrave;", $texte);
-	$texte = str_replace("ú", "&uacute;", $texte);
-	$texte = str_replace("û", "&ucirc;", $texte);
-	$texte = str_replace("ü", "&uuml;", $texte);
-	$texte = str_replace("ý", "&yacute;", $texte);
-	$texte = str_replace("þ", "&thorn;", $texte);
-	$texte = str_replace("ÿ", "&yuml;", $texte);
-	$texte = str_replace("œ", "oe", $texte);
-
-	return ($texte);
+	return $texte;
 }
+
 
 
 function replace_texte_speciaux_parpourcent($str)
@@ -713,16 +624,17 @@ function _getText($key, $encode = 0)
 }
 
 
-function commuterApostrophes($texte) {
-    $texteCorrige = '';
-    $longueur = strlen($texte);
-    for ($i = 0; $i < $longueur; $i++) {
-        // Si le caractère est une apostrophe typographique, remplacez-la par une apostrophe standard
-        if (ord($texte[$i]) === 8217) {
-            $texteCorrige .= "'";
-        } else {
-            $texteCorrige .= $texte[$i];
-        }
-    }
-    return $texteCorrige;
+function commuterApostrophes($texte)
+{
+	$texteCorrige = '';
+	$longueur = strlen($texte);
+	for ($i = 0; $i < $longueur; $i++) {
+		// Si le caractère est une apostrophe typographique, remplacez-la par une apostrophe standard
+		if (ord($texte[$i]) === 8217) {
+			$texteCorrige .= "'";
+		} else {
+			$texteCorrige .= $texte[$i];
+		}
+	}
+	return $texteCorrige;
 }

@@ -62,7 +62,15 @@ class connect
         if ($transforme == 0) {
             return addslashes(trim($value));
         } else {
-            return htmlentities(addslashes(trim($value)));
+
+            $texte =  htmlentities(trim($value));
+
+            $texte = str_replace("&lt;","<",$texte);
+            $texte = str_replace("&quot;",'"',$texte);
+            $texte = str_replace("&gt;",'>',$texte);
+            $texte = str_replace("&amp;nbsp;",' ',$texte);
+
+            return (addslashes(replace_texte_speciaux($texte))) ;
         }
     }
 
@@ -100,6 +108,11 @@ class connect
         $setClause = rtrim($setClause, ', ');
 
         $sql = "UPDATE $table SET $setClause " . " , updated = CURRENT_TIMESTAMP() , user_code_upd  = " . $_SESSION["user_code"] . " WHERE $condition";
+
+
+        echo($sql);
+
+
         $this->execute_req($sql);
     }
 

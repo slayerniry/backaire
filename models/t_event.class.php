@@ -54,7 +54,7 @@ class t_event extends connect
             unset($tab["photo_event"]);
         }
         $tab["titre"] =  $this->connect->my_htmlencode($tab["titre"], 1);
-        $tab["contenu"] =  $this->connect->my_htmlencode($tab["contenu"], 1);
+        $tab["contenu"] = $this->connect->my_htmlencode( $tab["contenu"] , 1) ;
         $this->connect->execute_insert("t_event", $tab);
     }
     function modifier($tab, $t)
@@ -63,7 +63,7 @@ class t_event extends connect
             unset($tab["photo_event"]);
         }
         $tab["titre"] =  $this->connect->my_htmlencode($tab["titre"], 1);
-        $tab["contenu"] =  $this->connect->my_htmlencode($tab["contenu"], 1);
+        $tab["contenu"] =  $this->connect->my_htmlencode($tab["contenu"],1)  ;
         $this->connect->execute_update("t_event", $tab, " id_event = '" . $tab['id_event'] . "' ");
         // $this->connect->execute_req($sql);
     }

@@ -63,7 +63,7 @@ unset($tab['t_type_event']["cnt"]);
             <div class="form-group row">
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="txttitre" class="control-label col-sm-4 col-md-2 ">
+                        <label for="txttitre" class="control-label col-sm-2 col-md-2 ">
                             <?php echo _getText('titre')  ?></label>
                         <div class="col-sm-4 col-md-8 ">
                             <input type="text" name="titre" id="txttitre" class="form-control" value="<?php echo $tab['t_event']['titre'] ?? "" ?>" pattern="" title="">
@@ -72,9 +72,9 @@ unset($tab['t_type_event']["cnt"]);
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="row">
-                        <label for="photo_event" class="control-label col-sm-4">
+                        <label for="photo_event" class="control-label col-md-2">
                             <?php echo _getText('photo')  ?></label>
                         <div class="col-sm-8">
                             <input type="file" class="form-control" name="photo_event" id="photo_event" value="">
@@ -91,9 +91,11 @@ unset($tab['t_type_event']["cnt"]);
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                </div>
+            <div class="form-group row">    
+                <div class="col-md-12">
                     <div class="row">
-                        <label for="adresse_t_event" class="control-label col-sm-4">
+                        <label for="adresse_t_event" class="control-label col-md-2">
                             <?php echo _getText('contenu')  ?></label>
                         <div class="col-sm-8">
                             <textarea name="contenu" id="contenu" class="form-control" rows="10" required="required"><?php echo $tab['t_event']['contenu'] ?? "" ?></textarea>
@@ -119,6 +121,9 @@ unset($tab['t_type_event']["cnt"]);
         inputField.css("color", "white");
     }
     jQuery(document).ready(function($) {
+
+        $('textarea').richText();
+
         $("#id_type_event").val("<?php echo $tab['t_event']['id_type_event'] ?? "" ?>");
         $("#btn_submit").click(function(event) {
             if (isEmpty($("#id_type_event"))) {
@@ -128,6 +133,7 @@ unset($tab['t_type_event']["cnt"]);
             } else if (isEmpty($("#txttitre"))) {
                 showError($("#txttitre"));
             } else {
+
                 formSocMAJ.submit();
             }
         });

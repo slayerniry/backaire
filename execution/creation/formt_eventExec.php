@@ -27,6 +27,7 @@ if (isset($_GET["code"])) {
         $t_event->ajouter($_POST, 1);
     }
     $var_url = "code=" . $_POST['id_event'];
+    $var_url .= "&te=" . $_POST['id_type_event'];
 }
 header("location:" . HTTP_PAGE_CREATION . "listeevenement.php?" . $var_url);
 exit();

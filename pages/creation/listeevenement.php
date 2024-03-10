@@ -97,7 +97,7 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                                     <?php
                                     if ($utilisateur->habilitationButton($_SERVER["SCRIPT_NAME"], "btnAjouter", $_SESSION["prf_code"])) {
                                     ?>
-                                        <a class="btn btn-success " href="#" title="" data-toggle="popover" data-trigger="hover" data-content="<?= _getText("btnAjouter") ?>" data-original-title=""><span url="<?= HTTP_PAGE_CREATION ?>formt_event.php?code=0" class="glyphicon glyphicon-plus btnupdate"></span></a>
+                                        <a class="btn btn-success " href="#" title="" data-toggle="popover" data-trigger="hover" data-content="<?= _getText("btnAjouter") ?>" data-original-title=""><span url="<?= HTTP_PAGE_CREATION ?>formt_event.php?code=0&te=<?= $_GET["te"] ?? "" ?>" class="glyphicon glyphicon-plus btnupdate"></span></a>
                                     <?php } ?>
                                     <div class="table-responsive">
                                         <table class="table table-hover table-striped   table-bordered " id="table">
@@ -187,6 +187,7 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
     </div>
     <script type="application/javascript">
         $(document).ready(function($) {
+
             $("#form").toggle("fast");
             $("#lg_rech").click(function(event) {
                 $("#form").toggle("slow");
@@ -284,8 +285,23 @@ if ($utilisateur->habilitationMenu($_SERVER["SCRIPT_NAME"] . "", $_SESSION["prf_
                 data.ajax.url("<?= HTTP_AJAX_CREATION ?>ajaxlistet_event.php" + var_url).load();
                 data.order([5, 'desc']).draw();
             });
+
+
+
         });
     </script>
+    <script type="application/javascript">
+        $(document).ready(function($) {
+
+            <?php if (isset($_GET["te"])) { ?>
+                $("#id_type_event_rech").val("<?= $_GET["te"] ?>");
+
+                $("#btnvalider").trigger("click");
+
+            <?php }  ?>
+        });
+    </script>
+
 <?php } else {
     require_once(RP_MAIN . "pages/vide.php");
 } ?>

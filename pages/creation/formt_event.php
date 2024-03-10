@@ -10,6 +10,7 @@ $t_event = new t_event();
 $societe = new societe();
 $type_event = new type_event();
 $tab['t_event'] = $societe->lireTable($_GET["code"], "t_event", "id_event");
+$tab['type'] = $societe->lireTable("LIST_SOUS_TYPE_EVENT", "parametre", "param_key");
 $tab['t_type_event'] = $type_event->lireParCritere(array());
 unset($tab['t_type_event']["cnt"]);
 ?>
@@ -18,6 +19,7 @@ unset($tab['t_type_event']["cnt"]);
         width: 300px;
         height: auto;
     }
+
     .photo_team {
         width: 300px;
         height: auto;
@@ -74,6 +76,26 @@ unset($tab['t_type_event']["cnt"]);
             <div class="form-group row">
                 <div class="col-md-12">
                     <div class="row">
+                        <label for="selectType" class="control-label col-sm-2 col-md-2 ">
+                            <?php echo _getText('type')  . "2" ?></label>
+                        <div class="col-sm-4 col-md-4 ">
+                            <select name="type" id="selectType" class="form-control">
+                                <option value=""></option>
+                                <?php
+                                $tabType = explode("|", $tab["type"]["param_value"]);
+                                foreach ($tabType as $key => $value) {
+                                    $tabTYpeDet = explode(":", $value);
+                                ?>
+                                    <option value="<?= $tabTYpeDet[0] ?>"><?= $tabTYpeDet[1] ?></option>
+                                <?php  } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="row">
                         <label for="photo_event" class="control-label col-md-2">
                             <?php echo _getText('photo')  ?></label>
                         <div class="col-sm-8">
@@ -91,8 +113,8 @@ unset($tab['t_type_event']["cnt"]);
                         </div>
                     </div>
                 </div>
-                </div>
-            <div class="form-group row">    
+            </div>
+            <div class="form-group row">
                 <div class="col-md-12">
                     <div class="row">
                         <label for="adresse_t_event" class="control-label col-md-2">
@@ -115,15 +137,14 @@ unset($tab['t_type_event']["cnt"]);
     function isEmpty(inputField) {
         return $.trim(inputField.val()) == "";
     }
+
     function showError(inputField) {
         inputField.focus();
         inputField.css("background-color", "red");
         inputField.css("color", "white");
     }
     jQuery(document).ready(function($) {
-
         $('textarea').richText();
-
         $("#id_type_event").val("<?php echo $tab['t_event']['id_type_event'] ?? "" ?>");
         $("#btn_submit").click(function(event) {
             if (isEmpty($("#id_type_event"))) {
@@ -133,7 +154,6 @@ unset($tab['t_type_event']["cnt"]);
             } else if (isEmpty($("#txttitre"))) {
                 showError($("#txttitre"));
             } else {
-
                 formSocMAJ.submit();
             }
         });
@@ -158,5 +178,10 @@ unset($tab['t_type_event']["cnt"]);
                 $("#photo_event_taille").html(imageWidth + " x " + imageHeight + " : " + fileSizeInKb);
             };
         });
+        $("#selectType").val("<?= $tab["t_event"]["type"] ?? ""   ?>");
+
+        <?php if (isset($_GET["te"])) {  ?>
+            $("#id_type_event").val("<?= $_GET["te"] ?>");
+        <?php } ?>
     });
 </script>

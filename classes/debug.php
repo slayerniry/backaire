@@ -521,7 +521,7 @@ function uploadFichierPhoto($source, $classImg, $type_return)
 				if ($type_return == 1) {
 					return $file;
 				} else {
-					return '<img class=" w-100 ' . $classImg . '"  src="data:image/' . $imageFileType . ';base64,' . base64_encode(file_get_contents($target_file)) . '" />';
+					return '<img style="background-color:transparent;border:none" class=" img-thumbnail w-100 ' . $classImg . '"  src="data:image/' . $imageFileType . ';base64,' . base64_encode(file_get_contents($target_file)) . '" />';
 				}
 			}
 		} else {

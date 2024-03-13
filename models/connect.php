@@ -109,10 +109,6 @@ class connect
 
         $sql = "UPDATE $table SET $setClause " . " , updated = CURRENT_TIMESTAMP() , user_code_upd  = " . $_SESSION["user_code"] . " WHERE $condition";
 
-
-        echo($sql);
-
-
         $this->execute_req($sql);
     }
 

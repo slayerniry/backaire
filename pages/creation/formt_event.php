@@ -161,23 +161,39 @@ unset($tab['t_type_event']["cnt"]);
 </script>
 <script>
     $(document).ready(function() {
+
         $('#photo_event').change(function() {
             var input = this;
             var url = window.URL || window.webkitURL;
             var file = input.files[0];
-            var img = url.createObjectURL(file);
-            var fileSizeInBytes = file.size;
-            var fileSizeInKb = (fileSizeInBytes / 1024);
-            $('.photo_event').attr('src', img);
-            // Obtenir la taille de l'image
+
+            // Réinitialiser la source de l'image à vide
+            $('.photo_event').attr('src', '');
+
+            // Créer une URL pour la nouvelle image
+            var newImgUrl = file ? url.createObjectURL(file) : '';
+
+            // Définir la source de l'image sur l'URL de la nouvelle image
+            $('.photo_event').attr('src', newImgUrl);
+
+            // Obtenir la taille de la nouvelle image
             var imageElement = new Image();
-            imageElement.src = img;
+            imageElement.src = newImgUrl;
             imageElement.onload = function() {
                 var imageWidth = this.width;
                 var imageHeight = this.height;
+                var fileSizeInBytes = file ? file.size : 0;
+                var fileSizeInKb = (fileSizeInBytes / 1024);
                 $("#photo_event_taille").html(imageWidth + " x " + imageHeight + " : " + fileSizeInKb);
             };
         });
+
+
+
+
+
+
+
         $("#selectType").val("<?= $tab["t_event"]["type"] ?? ""   ?>");
 
         <?php if (isset($_GET["te"])) {  ?>

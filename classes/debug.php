@@ -310,6 +310,122 @@ function replace_texte_speciaux_excel($str)
 /**
  * ! tsy mahazo kitiana intsony
  */
+function replace_texte_speciaux3($str) {
+    $special_characters = array(
+        "’" => "&prime;",
+        "'" => "&prime;",
+        " " => "&nbsp;",
+        "¡" => "&iexcl;",
+        "¢" => "&cent;",
+        "£" => "&pound;",
+        "¤" => "&curren;",
+        "¥" => "&yen;",
+        "¦" => "&brvbar;",
+        "§" => "&sect;",
+        "¨" => "&uml;",
+        "©" => "&copy;",
+        "ª" => "&ordf;",
+        "«" => "&laquo;",
+        "¬" => "&not;",
+        "­" => "&shy;",
+        "®" => "&reg;",
+        "¯" => "&macr;",
+        "°" => "&deg;",
+        "±" => "&plusmn;",
+        "²" => "&sup2;",
+        "³" => "&sup3;",
+        "´" => "&acute;",
+        "µ" => "&micro;",
+        "¶" => "&para;",
+        "·" => "&middot;",
+        "¸" => "&cedil;",
+        "¹" => "&sup1;",
+        "º" => "&ordm;",
+        "»" => "&raquo;",
+        "¼" => "&frac14;",
+        "½" => "&frac12;",
+        "¾" => "&frac34;",
+        "¿" => "&iquest;",
+        "À" => "&Agrave;",
+        "Á" => "&Aacute;",
+        "Â" => "&Acirc;",
+        "Ã" => "&Atilde;",
+        "Ä" => "&Auml;",
+        "Å" => "&Aring;",
+        "Æ" => "&AElig;",
+        "Ç" => "&Ccedil;",
+        "È" => "&Egrave;",
+        "É" => "&Eacute;",
+        "Ê" => "&Ecirc;",
+        "Ë" => "&Euml;",
+        "Ì" => "&Igrave;",
+        "Í" => "&Iacute;",
+        "Î" => "&Icirc;",
+        "Ï" => "&Iuml;",
+        "Ð" => "&ETH;",
+        "Ñ" => "&Ntilde;",
+        "Ò" => "&Ograve;",
+        "Ó" => "&Oacute;",
+        "Ô" => "&Ocirc;",
+        "Õ" => "&Otilde;",
+        "Ö" => "&Ouml;",
+        "×" => "&times;",
+        "Ø" => "&Oslash;",
+        "Ù" => "&Ugrave;",
+        "Ú" => "&Uacute;",
+        "Û" => "&Ucirc;",
+        "Ü" => "&Uuml;",
+        "Ý" => "&Yacute;",
+        "Þ" => "&THORN;",
+        "ß" => "&szlig;",
+        "à" => "&agrave;",
+        "á" => "&aacute;",
+        "â" => "&acirc;",
+        "ã" => "&atilde;",
+        "ä" => "&auml;",
+        "å" => "&aring;",
+        "æ" => "&aelig;",
+        "ç" => "&ccedil;",
+        "è" => "&egrave;",
+        "é" => "&eacute;",
+        "ê" => "&ecirc;",
+        "ë" => "&euml;",
+        "ì" => "&igrave;",
+        "í" => "&iacute;",
+        "î" => "&icirc;",
+        "ï" => "&iuml;",
+        "ð" => "&eth;",
+        "ñ" => "&ntilde;",
+        "ò" => "&ograve;",
+        "ó" => "&oacute;",
+        "ô" => "&ocirc;",
+        "õ" => "&otilde;",
+        "ö" => "&ouml;",
+        "÷" => "&divide;",
+        "ø" => "&oslash;",
+        "ù" => "&ugrave;",
+        "ú" => "&uacute;",
+        "û" => "&ucirc;",
+        "ü" => "&uuml;",
+        "ý" => "&yacute;",
+        "þ" => "&thorn;",
+        "ÿ" => "&yuml;"
+    );
+
+    // Parcours du tableau pour remplacer les caractères spéciaux
+    foreach ($special_characters as $char => $html_entity) {
+        $str = str_replace($char, $html_entity, $str);
+    }
+
+    // Remplacer le caractère "œ" par "oe"
+    $str = str_replace("œ", "oe", $str);
+
+    return $str;
+}
+
+/**
+ * ! tsy mahazo kitiana intsony
+ */
 function replace_texte_speciaux($str)
 {
 
@@ -620,11 +736,22 @@ function loadRessource($langue)
  * Initialisation de la session
  * @access	public
  */
+/**
+ * Initialisation de la session
+ * @access	public
+ */
 function _getText($key, $encode = 0)
 {
 	global $_TEXT;
 	if (isset($_TEXT[$key])) {
-		return  htmlentities($_TEXT[$key]);
+
+		if($encode == 0){
+			return replace_texte_speciaux3($_TEXT[$key]);
+		}else{
+			return ($_TEXT[$key]);
+		}
+
+		
 	}
 	return "[" . ($encode == 0 ? ($key) : ($key))  . "]";
 }

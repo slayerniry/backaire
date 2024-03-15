@@ -110,7 +110,7 @@ class utilisateur extends connect
 		$res = explode("/",$url);
 		$url2 = "";
 		foreach ($res as $key => $value) {
-			if($key > 2){
+			if($key > 3){
 				$url2 .= "/" . $value ;
 			}
 		}
@@ -132,7 +132,7 @@ class utilisateur extends connect
 		$res = explode("/",$url);
 		$url2 = "";
 		foreach ($res as $key => $value) {
-			if($key > 2){
+			if($key > 3){
 				$url2 .= "/" . $value ;
 			}
 		}

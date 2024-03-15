@@ -88,6 +88,6 @@ t_event = Evenement
 contenu = Contenu
 titre = Titre
 mise.jour.effectue = MIse &agrave; jour effectu&eacute;
-texte = Texte contenue
+teste = Texte 
 ressource = Ressource 
 telecharger = Télécharger

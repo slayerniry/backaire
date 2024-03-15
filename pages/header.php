@@ -1,7 +1,9 @@
 <?php
-$tab_php_self = explode("/", $_SERVER['PHP_SELF']);
-require_once($_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/" . "config.inc.php");
-require_once($_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/" . "include/session.php");
+
+require_once($_SERVER["DOCUMENT_ROOT"] . "/aire/admin/" . "config.inc.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/aire/admin/" . "include/session.php");
+
+
 require_once(RP_MODELS . "utilisateur.class.php");
 require_once(RP_MODELS . "parametre.class.php");
 $utilisateur = new utilisateur();

@@ -45,12 +45,24 @@ function loadRessource($langue) {
 * Initialisation de la session
 * @access	public
 */
-function _getText($key , $encode = 0) {
-	global $_TEXT ;
-	if ( isset($_TEXT[$key]) ) {
-		return ($_TEXT[$key]) ;
+/**
+ * Initialisation de la session
+ * @access	public
+ */
+function _getText($key, $encode = 0)
+{
+	global $_TEXT;
+	if (isset($_TEXT[$key])) {
+
+		if($encode == 0){
+			return replace_texte_speciaux($_TEXT[$key]);
+		}else{
+			return ($_TEXT[$key]);
+		}
+
+		
 	}
-	return "[". ($encode==0 ? ($key) : ($key))  ."]" ;
+	return "[" . ($encode == 0 ? ($key) : ($key))  . "]";
 }
 
 

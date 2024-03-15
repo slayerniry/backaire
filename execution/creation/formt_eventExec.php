@@ -1,7 +1,12 @@
 <?php
 require_once("../../config.inc.php");
 require_once("../../session.php");
+
 require_once(RP_MODELS . "t_event.class.php");
+require_once(RP_MODELS . "parametre.class.php");
+
+$parametre = new parametre();
+
 $t_event = new t_event();
 $tab = array();
 if (isset($_GET["code"])) {
@@ -12,10 +17,18 @@ if (isset($_GET["code"])) {
 } else {
     $source = $_FILES["photo_event"];
 
-   $typ_photo = "photo_event";
+   $typ_photo = "";
 
-   if($_POST["id_type_event"] == 4){
+   if($_POST["id_type_event"] ==  $parametre->lireParKey("CODE_TYPE_ACTIVITES") ){
+    $typ_photo = "photo_event";
+   }
+
+   if($_POST["id_type_event"] ==  $parametre->lireParKey("CODE_TYPE_TEAMS") ){
     $typ_photo = "photo_team";
+   } 
+
+   if($_POST["id_type_event"] == $parametre->lireParKey("CODE_TYPE_BARNER")){
+    $typ_photo = "photo_barner";
    }
 
     $_POST["photo_event"] =  uploadFichierPhoto($source, $typ_photo, 0);

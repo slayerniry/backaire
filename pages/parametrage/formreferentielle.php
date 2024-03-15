@@ -1,7 +1,7 @@
 <?php
-$tab_php_self = explode("/", $_SERVER['PHP_SELF']);
-require_once($_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/" . "config.inc.php");
-require_once($_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/" . "session.php");
+
+require_once("../../config.inc.php");
+require_once("../../session.php");
 loadRessource("fr");
 require_once(RP_MODELS . "type_reference.class.php");
 require_once(RP_MODELS . "referentielle.class.php");

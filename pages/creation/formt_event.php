@@ -1,13 +1,14 @@
 <?php
-$tab_php_self = explode("/", $_SERVER['PHP_SELF']);
-require_once($_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/" . "config.inc.php");
-require_once($_SERVER["DOCUMENT_ROOT"] . "/" .  $tab_php_self[1] . "/" . "include/session.php");
+require_once("../../config.inc.php");
+require_once("../../include/session.php");
 loadRessource("fr");
 require_once(RP_MODELS . "t_event.class.php");
 require_once(RP_MODELS . "societe.class.php");
 require_once(RP_MODELS . "type_event.class.php");
+require_once(RP_MODELS . "parametre.class.php");
 $t_event = new t_event();
 $societe = new societe();
+$parametre = new parametre();
 $type_event = new type_event();
 $tab['t_event'] = $societe->lireTable($_GET["code"], "t_event", "id_event");
 $tab['type'] = $societe->lireTable("LIST_SOUS_TYPE_EVENT", "parametre", "param_key");
@@ -19,7 +20,6 @@ unset($tab['t_type_event']["cnt"]);
         width: 300px;
         height: auto;
     }
-
     .photo_team {
         width: 300px;
         height: auto;
@@ -73,7 +73,7 @@ unset($tab['t_type_event']["cnt"]);
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" id="rowType2">
                 <div class="col-md-12">
                     <div class="row">
                         <label for="selectType" class="control-label col-sm-2 col-md-2 ">
@@ -137,7 +137,6 @@ unset($tab['t_type_event']["cnt"]);
     function isEmpty(inputField) {
         return $.trim(inputField.val()) == "";
     }
-
     function showError(inputField) {
         inputField.focus();
         inputField.css("background-color", "red");
@@ -161,21 +160,23 @@ unset($tab['t_type_event']["cnt"]);
 </script>
 <script>
     $(document).ready(function() {
-
+        $("#selectType").on('change', function() {
+            if ($("#id_type_event").val() == "<?= $parametre->lireParKey("CODE_TYPE_DOMAINES") ?>") {
+                $("#rowType2").show();
+            } else {
+                $("#rowType2").hide();
+            }
+        });
         $('#photo_event').change(function() {
             var input = this;
             var url = window.URL || window.webkitURL;
             var file = input.files[0];
-
             // Réinitialiser la source de l'image à vide
             $('.photo_event').attr('src', '');
-
             // Créer une URL pour la nouvelle image
             var newImgUrl = file ? url.createObjectURL(file) : '';
-
             // Définir la source de l'image sur l'URL de la nouvelle image
             $('.photo_event').attr('src', newImgUrl);
-
             // Obtenir la taille de la nouvelle image
             var imageElement = new Image();
             imageElement.src = newImgUrl;
@@ -187,15 +188,8 @@ unset($tab['t_type_event']["cnt"]);
                 $("#photo_event_taille").html(imageWidth + " x " + imageHeight + " : " + fileSizeInKb);
             };
         });
-
-
-
-
-
-
-
         $("#selectType").val("<?= $tab["t_event"]["type"] ?? ""   ?>");
-
+        $("#selectType").trigger('change');
         <?php if (isset($_GET["te"])) {  ?>
             $("#id_type_event").val("<?= $_GET["te"] ?>");
         <?php } ?>
